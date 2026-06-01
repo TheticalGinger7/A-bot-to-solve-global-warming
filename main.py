@@ -20,8 +20,14 @@ def you(message):
 
 @bot.message_handler(commands=['canIDo'])
 def canIDo(message):
-    bot.reply_to(message, "бот думает...")
-    response = str(botlogic.messegeForAi(messege=message))
-    bot.reply_to(message, response)
+    if message.text == "/canIDo":
+        bot.reply_to(message, "Пожалуйста, задайте вопрос про глобальное потепление, и я постараюсь помочь вам понять, что вы можете сделать, чтобы помочь в решении этой проблемы. Например, вы можете спросить: 'Что я могу сделать, чтобы уменьшить свой углеродный след?' или 'Как я могу поддержать экологические инициативы?'")
+        bot.register_next_step_handler(message, canIDo)
+    else:
+        bot.reply_to(message, "бот думает...")
+        response = str(botlogic.messegeForAi(messege=message))
+        bot.reply_to(message, response)
+    
+    
 
 bot.polling()
