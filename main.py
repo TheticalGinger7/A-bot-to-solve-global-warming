@@ -20,6 +20,8 @@ def you(message):
 
 @bot.message_handler(commands=['canIDo'])
 def canIDo(message):
-    bot.reply_to(message,f"{botlogic.messegeForAi(messege=message)}")
+    bot.reply_to(message, "бот думает...")
+    response = str(botlogic.messegeForAi(messege=message))
+    bot.reply_to(message, response)
 
 bot.polling()
